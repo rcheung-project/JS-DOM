@@ -67,18 +67,19 @@ borderBtn.addEventListener('click', chgColor);
 //6. validate the box [length should be more than 5 characters]
 //Selectors
 let subBtn = document.getElementById('btnSub2');
-let userName = document.querySelector('myName2');
+let userName = document.getElementById('myName2');
 let errMsg = document.querySelector('errMsg');
 
-console.log(errMsg);
-function validateName() {
-  if (userName === null) {
-    errMsg.textContent = "Please enter Name again (minimum 8 characters"
-    console.log("check again");
+function vName() {
+  if (userName === " ") {
+//    errMsg.value = "Please enter Name again (minimum 8 characters"
+    console.log("enter again");
   }
 };
 //Call the event
-subBtn.addEventListener('click', validateName);
+subBtn.addEventListener('click', vName);
+
+
 
 
 // 7.create a list of hobbies
@@ -107,14 +108,18 @@ let cat = {
 
 //Selectors
 let cardBtn = document.getElementById('btnProfile');
-function showCard(){
-  for (const key in cat) {
-    let li = document.createElement('li');
-    let adding = document.createTextNode(key + cat[key]);
+let catKey, catValue = [];
+function showCard() {
+  catKey = Object.keys(cat);
+  catValue = Object.values(cat);
+  for (let i = 0; i < 3; i++) {
+    display = catKey[i] + " is " + catValue[i]; 
+    let li = document.createElement('li'); 
+    let adding = document.createTextNode(display); 
     li.appendChild(adding);
     document.getElementById("displayCard").appendChild(li);
   }
-};
+}
 
 cardBtn.addEventListener('click',showCard);
 
